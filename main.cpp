@@ -8,28 +8,29 @@ next prject: set a program- with 3 blinks and 1 blink.
 
 #include "mbed.h"
 
-
-// Blinking rate in milliseconds
-#define BLINKING_RATE1 100ms
-# define BLINKING_RATE2 300ms
-# define BLINKING_RATE3 3s
-
-
 int main()
 {
     // Initialise the digital pin LED1 as an output
     DigitalOut led (PA_5);
 
 
-    while (1) {
-        if (led == 0){
-        led = !led;
-        ThisThread::sleep_for(BLINKING_RATE1);}
+while (1) {
+//blink 2 times
+led = 0;
+for (int i=0; i<2; i++)
+{ 
+    led =!led
+    ThisThread :: sleep_for(200ms)
+}
+ ThisThread :: sleep_for(3000ms)
 
-        if (led ==1) {
-        led = !led;
-        ThisThread::sleep_for(BLINKING_RATE2);}
+// blink 3 times
 
-        ThisThread::sleep_for(BLINKING_RATE3);
-    }
+led = 0;
+for (int i=0; i<3; i++)
+{ 
+    led =!led
+    ThisThread :: sleep_for(200ms)
+}
+ ThisThread :: sleep_for(3000ms)
 }
