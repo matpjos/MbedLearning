@@ -16,7 +16,7 @@ void buttonReleaseISR() {
 int main() {
     // Configure button interrupts
     button.fall(&buttonPressISR);  // Interrupt on falling edge (press)
-    button.rise(&buttonReleaseISR); // Interrupt on rising edge (release)
+    button.rise(&buttonReleaseISR); // Interrupt on rising edge (release) // i further deleted this line of code as it does not have significance. 
 
     while (true) {
         if (buttonPressed) { // Check if button is currently pressed
