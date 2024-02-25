@@ -1,0 +1,31 @@
+#include "mbed.h"
+
+DigitalOut led(PA_5);
+InterruptIn button(PC_13); // Or B1 (active low)
+
+volatile bool buttonPressed = false; // Flag to track button state
+
+void buttonPressISR() {
+    buttonPressed = true; // Set flag when button is pressed
+}
+
+void buttonReleaseISR() {
+    buttonPressed = false; // Reset flag when button is released
+}
+
+int main() {
+    // Configure button interrupts
+    button.fall(&buttonPressISR);  // Interrupt on falling edge (press)
+    button.rise(&buttonReleaseISR); // Interrupt on rising edge (release)
+
+    while (true) {
+        if (buttonPressed) { // Check if button is currently pressed
+            buttonPressed = false;
+            led = 1;
+            ThisThread :: sleep_for(700ms); // Toggle LED state based on flag
+            led = 0;
+             // Reset flag manually (not debounced)
+        }
+        
+    }
+}
