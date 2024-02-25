@@ -1,0 +1,40 @@
+#include "mbed.h"
+DigitalOut led (PA_5); 
+
+void blinkTwice ()
+{
+    led=0; 
+    for (int i=0; i<2; i++)
+    {
+    led=1;
+    ThisThread :: sleep_for(250ms); // lit led for 250ms
+    led=0; 
+    ThisThread :: sleep_for(250ms); // shut led for 250ms 
+    //for loop to repeat 2 times
+    }
+ThisThread :: sleep_for(2s); // keep LED shut for 2 sec to ensure stability.     
+}
+
+void blinkFifty ()
+{
+    led=0; 
+    for (int i=0; i<50; i++)
+    {
+    led=1;
+    ThisThread :: sleep_for(100ms); // lit led for 100ms
+    led=0; 
+    ThisThread :: sleep_for(100ms); // shut led for 100ms 
+    //for loop to repeat 50 times
+    }
+ThisThread :: sleep_for(2s); // keep LED shut for 2 sec to ensure stability.     
+}
+
+// main() runs in its own thread in the OS
+int main()
+{
+    while (true) {
+        blinkTwice(); // call 2 blink function
+        blinkFifty(); // call 2 blink function     
+            }
+}
+
