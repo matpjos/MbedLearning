@@ -1,9 +1,6 @@
-/* simple program to blink LED once after every one second.
-later to develop as status indicator LED. 
-
-next prject: set a program- with 3 blinks and 1 blink. 
-
-2nd next project: 3 blink to happen when sw is pressed. 
+/* simple program to blink LED in 2 patterns. 
+later to develop work under function. 
+then to blink the 2-times while pressing user button. 
  */
 
 #include "mbed.h"
