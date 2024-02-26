@@ -1,0 +1,41 @@
+//i tried to wite this program using a function call. but led not litting. need to see where the program is stuck. hence learnig serial printing. 
+
+#include "mbed.h"
+#include <cstdio>
+
+DigitalOut led(PA_5);
+InterruptIn button(PC_13); // Or B1 (active low)
+
+volatile bool buttonPressed = false; // Flag to track button state
+
+void buttonPressISR() {
+    buttonPressed = true; // Set flag when button is pressed
+}
+
+void buttonReleaseISR() {
+    buttonPressed = false; // Reset flag when button is released
+}
+
+void blinkLED(){
+      // Debounce timer using elapsed_time
+    Timer debounceTimer;
+    debounceTimer.start(); // Start timer only when button event occurs
+        if (debounceTimer.elapsed_time().count() >= 50) { // Debounce delay
+                led = 1; // lit LED. 
+                debounceTimer.reset(); // Reset timer for next event
+                ThisThread :: sleep_for(300ms); 
+                led=0;
+            }
+        }
+
+int main() {
+       // Configure button interrupts with debouncing
+    button.fall(&buttonPressISR);  // Interrupt on falling edge (press)
+    button.rise(&buttonReleaseISR); // Interrupt on rising edge (release)
+  
+      while (true) {
+        if (buttonPressed) { // Check for button press/release
+            blinkLED();                  
+    }
+}
+}
