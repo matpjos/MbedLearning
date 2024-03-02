@@ -1,0 +1,22 @@
+//this program uses raw string for string serial printout. 
+// this program print two diffrent strings. 
+
+
+#include "mbed.h"
+
+UnbufferedSerial pc(USBTX, USBRX);  
+
+ void printtest(){
+  const char *message1 = R"(print1
+  )";
+  pc.write(message1, strlen(message1));
+
+  const char *message2 = R"(print2
+  )";
+  pc.write(message2, strlen(message2));
+    }
+int main() {
+
+    printtest(); 
+   
+}
