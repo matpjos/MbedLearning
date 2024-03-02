@@ -1,0 +1,15 @@
+//i want to know where the code is stuck. for that i need a simple serial printer which outputs information while each block is execuiting. 
+#include "mbed.h"
+
+UnbufferedSerial pc(USBTX, USBRX);  
+
+int main() {
+  // Set baud rate (optional, default is 9600)
+   // Message as raw bytes
+  const char* message = "Hello World!\n";
+
+  // Send the message
+  pc.write(message, strlen(message));
+
+  return 0;
+}
