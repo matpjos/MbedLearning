@@ -1,0 +1,14 @@
+//this program uses raw string for string serial printout. 
+
+
+#include "mbed.h"
+
+UnbufferedSerial pc(USBTX, USBRX);  
+
+int main() {
+  const char *message = R"(this is raw string. 
+  \n new line concatenation not required
+  can freely insert enter for new line
+  \ slash is not considered as escape sequence)";
+  pc.write(message, strlen(message));
+}
