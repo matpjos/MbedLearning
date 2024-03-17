@@ -1,0 +1,15 @@
+\\simple program to print debug messages. 
+
+#include "mbed.h"
+#include <cstdio> 
+UnbufferedSerial pc(USBTX, USBRX);  
+
+int main() 
+  {
+  while (1) 
+    {   
+    printf ("hello world");
+    }
+  }
+
+            
